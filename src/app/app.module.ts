@@ -5,11 +5,12 @@ import { HttpClientModule } from '@angular/common/http'; // Hier das HttpClientM
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ApiService } from './services/api.service';  // Achte darauf, ApiService hier zu importieren
+import { ApiService } from './services/api.service';
+import { HomeComponent } from './components/home/home.component';  // Achte darauf, ApiService hier zu importieren
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, AppComponent],
-  imports: [BrowserModule, CommonModule, HttpClientModule],  // HttpClientModule hier hinzufügen
+  imports: [BrowserModule, CommonModule, HttpClientModule, HomeComponent],  // HttpClientModule hier hinzufügen
   providers: [ApiService],  // ApiService als Provider hier hinzufügen
   bootstrap: [AppComponent],
 })

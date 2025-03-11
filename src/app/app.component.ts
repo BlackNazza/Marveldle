@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from './services/api.service';
-import {AppModule} from './app.module';
-import {RouterOutlet} from '@angular/router';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +6,6 @@ import {RouterOutlet} from '@angular/router';
   styleUrls: ['./app.component.css'],
   standalone: false,
 })
-export class AppComponent implements OnInit {
-  data: any;
+export class AppComponent {
 
-  constructor(private apiService: ApiService) {}
-
-  ngOnInit(): void {
-    this.apiService.getData().subscribe((response) => {
-      this.data = response.data.results; // Die Charakterdaten
-      console.log(this.data);
-    });
-  }
 }
