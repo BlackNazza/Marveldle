@@ -1,29 +1,31 @@
-<div class="min-h-screen bg-gradient-to-br from-red-700 via-red-900 to-black text-white flex flex-col items-center">
-  <h1 class="text-4xl font-bold mt-8 uppercase">Marveldle - Guess the Hero!</h1>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marveldle - Guess the Hero!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Marveldle - Guess the Hero!</h1>
 
-  <div *ngIf="character" class="mt-6 p-6 bg-black/70 rounded-lg shadow-lg text-center">
-    <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension"
-         alt="Character Image"
-         class="h-64 w-64 mx-auto rounded-md shadow-md">
+<div *ngIf="character" class="character-box">
+  <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension"
+       alt="Character Image"
+       class="character-image">
 
-    <p class="mt-4 text-lg font-semibold">Hint: {{ character.description || 'No description available' }}</p>
+  <p class="hint">Hint: {{ character.description || 'No description available' }}</p>
 
-    <input [(ngModel)]="userGuess" placeholder="Enter character name..."
-           class="mt-4 p-2 w-72 text-black rounded-md shadow-md text-center">
+  <input [(ngModel)]="userGuess" placeholder="Enter character name..." class="input-box">
 
-    <button (click)="checkGuess()"
-            class="mt-4 bg-yellow-500 text-black px-6 py-2 rounded-lg hover:bg-yellow-400">
-      Submit
-    </button>
+  <button (click)="checkGuess()" class="button button-submit">Submit</button>
 
-    <p *ngIf="isCorrect !== null" class="mt-4 text-lg">
-      <span *ngIf="isCorrect" class="text-green-400">✅ Correct! It's {{ character.name }}!</span>
-      <span *ngIf="!isCorrect" class="text-red-400">❌ Wrong! Try again.</span>
-    </p>
+  <p *ngIf="isCorrect !== null" class="result">
+    <span *ngIf="isCorrect" class="correct">✅ Correct! It's {{ character.name }}!</span>
+    <span *ngIf="!isCorrect" class="wrong">❌ Wrong! Try again.</span>
+  </p>
 
-    <button (click)="skipToNext()"
-            class="mt-6 bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-400">
-      Skip to Next
-    </button>
-  </div>
+  <button (click)="skipToNext()" class="button button-skip">Skip to Next</button>
 </div>
+</body>
+</html>

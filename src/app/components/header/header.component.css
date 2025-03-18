@@ -1,0 +1,22 @@
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: black;
+  padding: 10px;
+  text-align: center;
+}
+
+nav button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+nav button:hover {
+  background: darkred;
+}
