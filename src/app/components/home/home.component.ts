@@ -1,19 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from '../../services/api.service';
+// import {ApiService} from '../../services/api.service';
 import {KeyValuePipe, NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MarvelService} from '../../services/marvel.service';
 import {MarvelCharacter} from '../../services/marvel-character.model';
+import {ExportComponent} from '../export/export.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  standalone: true,
-  imports: [NgIf, FormsModule, NgClass, NgForOf, KeyValuePipe]
+  standalone: false,
 })
 export class HomeComponent implements OnInit {
   // Beispiel in der Component:
+  tries: number = 0;
+  showExportModal: boolean = false;
   characters: MarvelCharacter[] = [];
   suggestions: MarvelCharacter[] = [];
   correctCharacter!: MarvelCharacter;
@@ -22,8 +24,11 @@ export class HomeComponent implements OnInit {
   guessedCharacter!: MarvelCharacter;
   userGuess: string = '';
   isCorrect: boolean | null = null;
+  errorMessage: string = '';
 
-  constructor(private apiService: ApiService, private marvelService: MarvelService) {
+  dataToExport = {};
+
+  constructor(/*private apiService: ApiService*/ private marvelService: MarvelService) {
   }
 
   ngOnInit(): void {
@@ -31,6 +36,11 @@ export class HomeComponent implements OnInit {
       this.characters = response;
       this.correctCharacter = this.selectRandomCharacter();
     });
+    this.isCorrect = false;
+    this.suggestions = [];
+    this.charactersGuess = [];
+    this.charactersGuessCells = new Map<string, string[]>();
+
   }
 
   // Wählt einen zufälligen Charakter – niemals undefined
@@ -41,18 +51,37 @@ export class HomeComponent implements OnInit {
 
   // Hauptlogik zum Überprüfen des Tipps
   checkGuess(): void {
-      this.isCorrect = false;
-      try {
-        this.isCorrect = this.userGuess.toLowerCase() === this.correctCharacter.name.toLowerCase();
-        this.guessedCharacter = this.getCharacterByName(this.userGuess);
-        if (!this.charactersGuess.some(c => c.name === this.guessedCharacter.name)) {
-          this.charactersGuess.push(this.guessedCharacter);
-          this.characters = this.characters.filter(c => c !== this.guessedCharacter);
+    if (!this.userGuess || this.userGuess.trim() === '') {
+      this.errorMessage = 'Bitte gib einen Charakternamen ein!';
+      return;  // Funktion verlassen, damit kein weiterer Code ausgeführt wird
+    }
+    this.errorMessage = '';
+    this.isCorrect = false;
+    try {
+      this.isCorrect = this.userGuess.toLowerCase() === this.correctCharacter.name.toLowerCase();
+      if (this.isCorrect) {
+        this.dataToExport = {
+          name: this.correctCharacter.name,
+          geschlecht: this.correctCharacter.geschlecht,
+          spezies: this.correctCharacter.spezies,
+          team: this.correctCharacter.team,
+          herkunft: this.correctCharacter.herkunft,
+          jahr: this.correctCharacter.jahr,
+          seite: this.correctCharacter.seite,
+          faehigkeit: this.correctCharacter.faehigkeit,
+          versuche: this.tries,
         }
-        this.setCellClassMap();
-      } catch (error) {
-        console.error(error);
       }
+      this.tries++;
+      this.guessedCharacter = this.getCharacterByName(this.userGuess);
+      if (!this.charactersGuess.some(c => c.name === this.guessedCharacter.name)) {
+        this.charactersGuess.push(this.guessedCharacter);
+        this.characters = this.characters.filter(c => c !== this.guessedCharacter);
+      }
+      this.setCellClassMap();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // Liefert IMMER einen Charakter oder wirft Fehler
@@ -118,4 +147,30 @@ export class HomeComponent implements OnInit {
       character.name.toLowerCase().startsWith(input)
     ).slice(0, 5); // Max. 5 Vorschläge
   }
+
+  restartGame() {
+    this.ngOnInit();
+  }
+
+  openExportModal() {
+    this.showExportModal = true;
+  }
+
+  closeExportModal() {
+    this.showExportModal = false;
+  }
+
+  handleExportSubmit(result: any): void {
+    console.log('Exportdaten erhalten:', result);
+
+    // Beispiel: Lokale Datei-Exportlogik
+    const blob = new Blob([JSON.stringify(result)], { type: 'application/json' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = `${result.name}_${result.date}.json`;
+    link.click();
+
+    this.closeExportModal();
+  }
+
 }

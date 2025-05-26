@@ -1,0 +1,53 @@
+.marvel-footer {
+  background: linear-gradient(90deg, #b91c1c, #7f1d1d);
+  color: #f3f4f6;
+  text-align: center;
+  padding: 1rem 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.95rem;
+  box-shadow: inset 0 1px 5px rgba(255, 255, 255, 0.15),
+  0 -3px 10px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.marvel-footer::before {
+  content: '🕷️'; /* Spider-Man Symbol als cooler Touch */
+  font-size: 1.3rem;
+  margin-right: 8px;
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
+}
+
+.marvel-footer a {
+  color: #facc15; /* Marvel Gelb */
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.marvel-footer a:hover {
+  color: #ffd454;
+  text-decoration: underline;
+  text-shadow: 0 0 5px #ffd454aa;
+}
+
+/* Für kleine Bildschirme: Text etwas kleiner */
+@media (max-width: 480px) {
+  .marvel-footer {
+    font-size: 0.85rem;
+    padding: 0.8rem 15px;
+  }
+
+  .marvel-footer::before {
+    font-size: 1.1rem;
+  }
+}

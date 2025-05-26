@@ -1,5 +1,7 @@
-<nav>
-  <button (click)="scrollTo('home')">Home</button>
-  <button (click)="scrollTo('game')">Game</button>
-  <button (click)="scrollTo('contact')">Contact</button>
-</nav>
+<header class="marvel-header">
+  <div class="logo">Marveldle</div>
+  <nav>
+    <a routerLink="/" class="nav-link" routerLinkActive="active">Home</a>
+    <a routerLink="/characters" class="nav-link" routerLinkActive="active">Charaktere</a>
+  </nav>
+</header>

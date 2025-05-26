@@ -1,17 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common'; // Falls nicht schon importiert
-import { HttpClientModule } from '@angular/common/http'; // Hier das HttpClientModule importieren
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { ApiService } from './services/api.service';
-import { HomeComponent } from './components/home/home.component';  // Achte darauf, ApiService hier zu importieren
+import { HomeComponent } from './components/home/home.component';
+import {ExportComponent} from './components/export/export.component';
+import {FormsModule} from '@angular/forms';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {HttpClientModule} from '@angular/common/http';
+import {CharacterComponent} from './components/character/character.component';
+
+
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },       // Startseite
+  { path: 'characters', component: CharacterComponent },  // Beispiel-Route
+  { path: '**', redirectTo: '', pathMatch: 'full' } // Wildcard
+];
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, AppComponent],
-  imports: [BrowserModule, CommonModule, HttpClientModule, HomeComponent],  // HttpClientModule hier hinzufügen
-  providers: [ApiService],  // ApiService als Provider hier hinzufügen
-  bootstrap: [AppComponent],
+  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    ExportComponent,
+    FormsModule,
+    HttpClientModule,
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

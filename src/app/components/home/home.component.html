@@ -11,16 +11,17 @@
 
 <div *ngIf="correctCharacter" class="character-box">
 
-  <h1>Fange mit dem ersten Marvel character an</h1>
+  <h1>Charakter Eingeben!</h1>
 
   <input [(ngModel)]="userGuess" (input)="filterSuggestions()" placeholder="Enter character name..." class="input-box">
+  <button (click)="checkGuess()" class="button button-submit">Submit</button>
   <ul *ngIf="suggestions.length > 0" class="autocomplete-list">
     <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
       {{ suggestion.name }}
     </li>
   </ul>
 
-  <button (click)="checkGuess()" class="button button-submit">Submit</button>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 
   <table class="character-table">
     <thead>
@@ -68,9 +69,19 @@
 
 
 
-  <p *ngIf="isCorrect !== null" class="result">
+  <p *ngIf="isCorrect !== false" class="result">
     <span *ngIf="isCorrect" class="correct">✅ Correct! It's {{ correctCharacter.name }}!</span>
-    <button (click)="checkGuess()" class="button button-submit">Submit</button>
+    <button (click)="restartGame()" class="button button-submit">Restart</button>
+    <button (click)="openExportModal()" class="button button-submit">Export</button>
+
+    <app-export
+      *ngIf="showExportModal"
+      [exportData]="dataToExport"
+      (closeModal)="closeExportModal()"
+      (submitExport)="handleExportSubmit($event)"
+    ></app-export>
+
+
   </p>
 </div>
 </body>

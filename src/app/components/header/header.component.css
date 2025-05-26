@@ -1,22 +1,124 @@
-nav {
+.marvel-header {
+  background: linear-gradient(90deg, #b91c1c, #7f1d1d);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(185, 28, 28, 0.8);
+  user-select: none;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  background: black;
-  padding: 10px;
-  text-align: center;
+  z-index: 1100;
+  /* Wichtige Ergänzung für flexibles Verhalten */
+  flex-wrap: wrap;
+  gap: 10px;
+  box-sizing: border-box;
 }
 
-nav button {
-  background: red;
+.logo {
+  font-family: cursive;
+  font-size: 2.4rem;
+  color: #facc15; /* Marvel Gelb */
+  text-shadow:
+    0 0 8px #facc15,
+    2px 2px 6px rgba(0,0,0,0.7);
+  position: relative;
+  cursor: default;
+  white-space: nowrap; /* Verhindert Umbruch im Logo-Text */
+  flex-shrink: 0;      /* Logo darf nicht schrumpfen */
+  margin-right: 10px;
+}
+
+.logo::before {
+  content: '🕷️'; /* Spider-Man Emoji */
+  font-size: 1.8rem;
+  margin-right: 8px;
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.7));
+}
+
+nav {
+  display: flex;
+  gap: 1.8rem;
+  flex-wrap: wrap; /* Erlaubt Umbruch der Links */
+  justify-content: flex-end;
+  flex: 1 1 auto;   /* Nav darf wachsen und schrumpfen */
+  min-width: 0;     /* Wichtig, damit flex-shrink wirkt */
+}
+
+.nav-link {
   color: white;
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap; /* Verhindert, dass Links umbrechen */
+  flex-shrink: 0;      /* Verhindert Schrumpfen */
 }
 
-nav button:hover {
-  background: darkred;
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 3px;
+  background: #facc15;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #facc15;
+  text-shadow: 0 0 8px #facc15;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .marvel-header {
+    padding: 1rem 1rem;
+  }
+
+  .logo {
+    font-size: 2rem;
+    left: -25px;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .logo::before {
+    font-size: 1.4rem;
+    left: -20px;
+  }
+
+  nav {
+    gap: 0.8rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
 }
