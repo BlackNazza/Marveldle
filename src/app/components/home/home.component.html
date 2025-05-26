@@ -9,23 +9,69 @@
 <body>
 <h1>Marveldle - Guess the Hero!</h1>
 
-<div *ngIf="character" class="character-box">
-  <img [src]="character.bildUrl"
-       alt="Character Image"
-       class="character-image">
+<div *ngIf="correctCharacter" class="character-box">
 
-  <p class="hint">Hint: {{ character.name || 'No description available' }}</p>
+  <h1>Fange mit dem ersten Marvel character an</h1>
 
-  <input [(ngModel)]="userGuess" placeholder="Enter character name..." class="input-box">
+  <input [(ngModel)]="userGuess" (input)="filterSuggestions()" placeholder="Enter character name..." class="input-box">
+  <ul *ngIf="suggestions.length > 0" class="autocomplete-list">
+    <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
+      {{ suggestion.name }}
+    </li>
+  </ul>
 
   <button (click)="checkGuess()" class="button button-submit">Submit</button>
 
-  <p *ngIf="isCorrect !== null" class="result">
-    <span *ngIf="isCorrect" class="correct">✅ Correct! It's {{ character.name }}!</span>
-    <span *ngIf="!isCorrect" class="wrong">❌ Wrong! Try again.</span>
-  </p>
+  <table class="character-table">
+    <thead>
+    <tr>
+      <th> Name</th>
+      <th> Geschlecht</th>
+      <th> Spezies</th>
+      <th> Team</th>
+      <th> Herkunft</th>
+      <th> Jahr</th>
+      <th> Seite</th>
+      <th> Fähigkeit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let guessedCharacter of charactersGuess">
+      <td [ngClass]="getCellClass(guessedCharacter.name, 0)">
+        {{ guessedCharacter.name }}
+      </td>
+      <td [ngClass]="getCellClass(guessedCharacter.name, 1)">
+        {{ guessedCharacter.geschlecht }}
+      </td>
+      <td [ngClass]="getCellClass(guessedCharacter.name, 2)">
+        {{ guessedCharacter.spezies }}
+      </td>
+      <td [ngClass]="getCellClass(guessedCharacter.name, 3)">
+        {{ guessedCharacter.team }}
+      </td>
+      <td [ngClass]="getCellClass(guessedCharacter.name, 4)">
+        {{ guessedCharacter.herkunft }}
+      </td>
+      <td [ngClass]="getCellClass(guessedCharacter.name, 5)">
+        {{ guessedCharacter.jahr }}
+      </td>
+      <td [ngClass]="getCellClass(guessedCharacter.name, 7)">
+        {{ guessedCharacter.seite }}
+      </td>
+      <td [ngClass]="getCellClass(guessedCharacter.name, 7)">
+        {{ guessedCharacter.faehigkeit }}
+      </td>
+    </tr>
 
-  <button (click)="skipToNext()" class="button button-skip">Skip to Next</button>
+    </tbody>
+  </table>
+
+
+
+  <p *ngIf="isCorrect !== null" class="result">
+    <span *ngIf="isCorrect" class="correct">✅ Correct! It's {{ correctCharacter.name }}!</span>
+    <button (click)="checkGuess()" class="button button-submit">Submit</button>
+  </p>
 </div>
 </body>
 </html>

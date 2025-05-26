@@ -6,6 +6,6 @@ export interface MarvelCharacter {
   herkunft: string;
   jahr: number;
   seite: 'Gut' | 'Böse' | 'Neutral';
-  fähigkeit: string;
+  faehigkeit: string;
   bildUrl: string;
 }

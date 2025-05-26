@@ -105,3 +105,19 @@ h1 {
 .wrong {
   color: #ef4444;
 }
+
+.character-table{
+  margin-top: 50px;
+}
+
+.correct-cell {
+  background-color: #28a745; /* grün */
+  color: white;
+  font-weight: bold;
+}
+
+.wrong-cell {
+  background-color: #dc3545; /* rot */
+  color: white;
+  font-weight: bold;
+}
