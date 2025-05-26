@@ -7,7 +7,7 @@ import md5 from 'crypto-js/md5'; // MD5-Hash für den API-Request
   providedIn: 'root',
 })
 export class ApiService {
-  private publicKey = '6590fe533225d3bbcb2ae8685cf1695b';
+  private publicKey = '4845b8885eabf230dec8e2ec0782c263';
   private apiUrl = 'https://gateway.marvel.com/v1/public/characters';
 
   constructor(private http: HttpClient) {}
@@ -15,7 +15,7 @@ export class ApiService {
   getData(): Observable<any> {
     const ts = new Date().getTime().toString();
 
-    const privateKey = 'a927529eb60f85f6542f4ca8b9851d98d764ed49';
+    const privateKey = '89f43c0de22cfd2a2c1e38516f9677d56f84f16a';
     const hash = md5(ts + privateKey + this.publicKey).toString();
     const url = `${this.apiUrl}?ts=${ts}&apikey=${this.publicKey}&hash=${hash}`;
 

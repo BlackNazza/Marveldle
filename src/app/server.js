@@ -5,8 +5,8 @@ const crypto = require('crypto');
 const app = express();
 const PORT = 3000;
 
-const publicKey = '6590fe533225d3bbcb2ae8685cf1695b';
-const privateKey = 'a927529eb60f85f6542f4ca8b9851d98d764ed49';
+const publicKey = '4845b8885eabf230dec8e2ec0782c263';
+const privateKey = '89f43c0de22cfd2a2c1e38516f9677d56f84f16a';
 
 app.get('/api/marvel', async (req, res) => {
   const ts = Date.now().toString();

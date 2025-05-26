@@ -10,11 +10,11 @@
 <h1>Marveldle - Guess the Hero!</h1>
 
 <div *ngIf="character" class="character-box">
-  <img [src]="character.thumbnail.path + '.' + character.thumbnail.extension"
+  <img [src]="character.bildUrl"
        alt="Character Image"
        class="character-image">
 
-  <p class="hint">Hint: {{ character.description || 'No description available' }}</p>
+  <p class="hint">Hint: {{ character.name || 'No description available' }}</p>
 
   <input [(ngModel)]="userGuess" placeholder="Enter character name..." class="input-box">
 
