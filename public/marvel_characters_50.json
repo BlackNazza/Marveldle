@@ -1,0 +1,167 @@
+[
+    {
+        "name": "Iron Man",
+        "geschlecht": "Männlich",
+        "spezies": "Mensch",
+        "team": "Avengers",
+        "herkunft": "New York City",
+        "jahr": 1963,
+        "seite": "Gut",
+        "faehigkeit": "Genius-Level Intelligenz, High-Tech-Rüstung",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/e/e0/Iron_Man_bleeding_edge.jpg"
+    },
+    {
+        "name": "Captain America",
+        "geschlecht": "Männlich",
+        "spezies": "Mensch",
+        "team": "Avengers",
+        "herkunft": "Brooklyn, New York",
+        "jahr": 1941,
+        "seite": "Gut",
+        "faehigkeit": "Übermenschliche Stärke, Schildkampf",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/9/91/CaptainAmerica109.jpg"
+    },
+    {
+        "name": "Thor",
+        "geschlecht": "Männlich",
+        "spezies": "Asgardianer",
+        "team": "Avengers",
+        "herkunft": "Asgard",
+        "jahr": 1962,
+        "seite": "Gut",
+        "faehigkeit": "Donnergott, Mjölnir",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/4/4c/Thor_Journey_into_Mystery_83.jpg"
+    },
+    {
+        "name": "Hulk",
+        "geschlecht": "Männlich",
+        "spezies": "Mensch / Gamma-Mutant",
+        "team": "Avengers",
+        "herkunft": "Dayton, Ohio",
+        "jahr": 1962,
+        "seite": "Gut",
+        "faehigkeit": "Übermenschliche Stärke, Regeneration",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/5/59/Hulk_%28comics_character%29.png"
+    },
+    {
+        "name": "Black Widow",
+        "geschlecht": "Weiblich",
+        "spezies": "Mensch",
+        "team": "Avengers, S.H.I.E.L.D.",
+        "herkunft": "Russland",
+        "jahr": 1964,
+        "seite": "Gut",
+        "faehigkeit": "Spionage, Kampfkunst",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/1/1b/Black_Widow_Marvel_Comics.png"
+    },
+    {
+        "name": "Hawkeye",
+        "geschlecht": "Männlich",
+        "spezies": "Mensch",
+        "team": "Avengers",
+        "herkunft": "Iowa",
+        "jahr": 1964,
+        "seite": "Gut",
+        "faehigkeit": "Meisterschütze, Bogenschütze",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/1/1b/Hawkeye_%28Clint_Barton%29.png"
+    },
+    {
+        "name": "Spider-Man",
+        "geschlecht": "Männlich",
+        "spezies": "Mensch mit Spinnenkräften",
+        "team": "Avengers",
+        "herkunft": "Queens, New York",
+        "jahr": 1962,
+        "seite": "Gut",
+        "faehigkeit": "Wandklettern, Spinnensinn",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/0/0c/Spiderman50.jpg"
+    },
+    {
+        "name": "Doctor Strange",
+        "geschlecht": "Männlich",
+        "spezies": "Mensch",
+        "team": "Defenders",
+        "herkunft": "Philadelphia, Pennsylvania",
+        "jahr": 1963,
+        "seite": "Gut",
+        "faehigkeit": "Magie, Sorcerer Supreme",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/c/c7/Doctor_Strange_Vol_4_2.png"
+    },
+    {
+        "name": "Black Panther",
+        "geschlecht": "Männlich",
+        "spezies": "Mensch",
+        "team": "Avengers",
+        "herkunft": "Wakanda",
+        "jahr": 1966,
+        "seite": "Gut",
+        "faehigkeit": "Übermenschliche Sinne, Vibranium-Anzug",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/9/9f/Black_Panther_OS_Vol_1_2.png"
+    },
+    {
+        "name": "Scarlet Witch",
+        "geschlecht": "Weiblich",
+        "spezies": "Mutantin",
+        "team": "Avengers",
+        "herkunft": "Transia",
+        "jahr": 1964,
+        "seite": "Gut",
+        "faehigkeit": "Chaosmagie, Realität verändern",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/1/10/Scarlet_Witch.jpg"
+    },
+    {
+        "name": "Wolverine",
+        "geschlecht": "Männlich",
+        "spezies": "Mutant",
+        "team": "X-Men",
+        "herkunft": "Kanada",
+        "jahr": 1974,
+        "seite": "Gut",
+        "faehigkeit": "Heilungsfaktor, Adamantium-Klauen",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/2/29/Wolverine_Character.jpg"
+    },
+    {
+        "name": "Deadpool",
+        "geschlecht": "Männlich",
+        "spezies": "Mutant",
+        "team": "X-Force",
+        "herkunft": "Kanada",
+        "jahr": 1991,
+        "seite": "Neutral",
+        "faehigkeit": "Heilungsfaktor, Kampfkunst",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/0/03/Deadpool_Icon.png"
+    },
+    {
+        "name": "Storm",
+        "geschlecht": "Weiblich",
+        "spezies": "Mutantin",
+        "team": "X-Men",
+        "herkunft": "Kenia",
+        "jahr": 1975,
+        "seite": "Gut",
+        "faehigkeit": "Wetterkontrolle",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/f/f8/Stormmarvel.jpg"
+    },
+    {
+        "name": "Professor X",
+        "geschlecht": "Männlich",
+        "spezies": "Mensch",
+        "team": "X-Men",
+        "herkunft": "New York",
+        "jahr": 1963,
+        "seite": "Gut",
+        "faehigkeit": "Telepathie",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/f/f5/Professor_X_Marvel_Comics.png"
+    },
+    {
+        "name": "Magneto",
+        "geschlecht": "Männlich",
+        "spezies": "Mutant",
+        "team": "Brotherhood of Mutants",
+        "herkunft": "Polen",
+        "jahr": 1963,
+        "seite": "Böse",
+        "faehigkeit": "Magnetfeldkontrolle",
+        "bild": "https://upload.wikimedia.org/wikipedia/en/2/2e/Magneto_%28Marvel_Comics_character%29.png"
+    }
+]

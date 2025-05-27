@@ -3,6 +3,10 @@
 h1 {
   font-family: 'Bangers', cursive;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  text-transform: uppercase;
 }
 
 button {
@@ -12,6 +16,7 @@ button {
 button:hover {
   transform: scale(1.05);
 }
+
 body {
   margin-top: 10vh;
   min-height: 80vh;
@@ -26,13 +31,6 @@ body {
 .container {
   text-align: center;
   margin-top: 20px;
-}
-
-h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-top: 2rem;
-  text-transform: uppercase;
 }
 
 .character-box {
@@ -50,6 +48,7 @@ h1 {
   border-radius: 0.375rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
+
 .error-message {
   color: red;
   font-weight: bold;
@@ -113,8 +112,12 @@ h1 {
   color: #ef4444;
 }
 
-.character-table{
+.character-table {
   margin-top: 50px;
+}
+
+.character-table td {
+  padding: 5px;
 }
 
 .correct-cell {
@@ -129,6 +132,11 @@ h1 {
   font-weight: bold;
 }
 
+tbody {
+  text-align: center;
+}
+
+/* Autocomplete Styles */
 .autocomplete-list {
   list-style: none;
   margin: 0;
@@ -151,14 +159,10 @@ h1 {
 }
 
 .autocomplete-list li:hover,
-.autocomplete-list li:focus {
-  background-color: #b91c1c; /* kräftiges Header-Rot beim Hover */
+.autocomplete-list li:focus,
+.autocomplete-list li.active {
+  background-color: #b91c1c; /* kräftiges Header-Rot beim Hover oder aktiv */
   color: #fff;               /* Weiß für bessere Lesbarkeit */
   text-shadow: 0 0 8px #facc15;
   outline: none;
 }
-tbody{
-  text-align: center;
-}
-
-

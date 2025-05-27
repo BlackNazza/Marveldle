@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, input, OnInit} from '@angular/core';
 // import {ApiService} from '../../services/api.service';
 import {KeyValuePipe, NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -14,6 +14,7 @@ import {ExportComponent} from '../export/export.component';
 })
 export class HomeComponent implements OnInit {
   // Beispiel in der Component:
+  highlightedIndex: number = -1;
   tries: number = 0;
   showExportModal: boolean = false;
   characters: MarvelCharacter[] = [];
@@ -55,6 +56,15 @@ export class HomeComponent implements OnInit {
       this.errorMessage = 'Bitte gib einen Charakternamen ein!';
       return;  // Funktion verlassen, damit kein weiterer Code ausgeführt wird
     }
+    const cleanedGuess = this.userGuess.trim().toLowerCase();
+    const alreadyGuessed = this.charactersGuess.some(
+      c => c.name.toLowerCase() === cleanedGuess
+    );
+
+    if (alreadyGuessed) {
+      this.errorMessage = 'Diesen Charakter hast du bereits geraten!';
+      return;
+    }
     this.errorMessage = '';
     this.isCorrect = false;
     try {
@@ -79,6 +89,7 @@ export class HomeComponent implements OnInit {
         this.characters = this.characters.filter(c => c !== this.guessedCharacter);
       }
       this.setCellClassMap();
+      this.userGuess = '';
     } catch (error) {
       console.error(error);
     }
@@ -138,6 +149,8 @@ export class HomeComponent implements OnInit {
 
   filterSuggestions(): void {
     const input = this.userGuess.trim().toLowerCase();
+    this.highlightedIndex = -1; // Zurücksetzen
+
     if (!input) {
       this.suggestions = [];
       return;
@@ -147,6 +160,36 @@ export class HomeComponent implements OnInit {
       character.name.toLowerCase().startsWith(input)
     ).slice(0, 5); // Max. 5 Vorschläge
   }
+
+  onKeyDown(event: KeyboardEvent): void {
+    const key = event.key;
+
+    if (this.suggestions.length === 0) {
+      if (key === 'Enter') {
+        event.preventDefault();
+        this.checkGuess();
+      }
+      return;
+    }
+
+    if (key === 'ArrowDown') {
+      event.preventDefault();
+      this.highlightedIndex = (this.highlightedIndex + 1) % this.suggestions.length;
+    } else if (key === 'ArrowUp') {
+      event.preventDefault();
+      this.highlightedIndex =
+        (this.highlightedIndex - 1 + this.suggestions.length) % this.suggestions.length;
+    } else if (key === 'Enter') {
+      event.preventDefault();
+      if (this.highlightedIndex >= 0 && this.highlightedIndex < this.suggestions.length) {
+        this.selectSuggestion(this.suggestions[this.highlightedIndex]);
+      } else {
+        this.checkGuess();
+      }
+    }
+  }
+
+
 
   restartGame() {
     this.ngOnInit();

@@ -2,8 +2,20 @@
 <div class="modal-content" (click)="$event.stopPropagation()">
   <h2>Exportieren</h2>
   <form #form="ngForm" novalidate>
+
     <label for="name">Name:</label><br />
-    <input type="text" id="name" [(ngModel)]="name" name="name" required /><br /><br />
+    <input
+      type="text"
+      id="name"
+      [(ngModel)]="name"
+      name="name"
+      required
+      pattern="^[A-Za-zÄäÖöÜüß\s-]+$"
+      #nameInput="ngModel"
+    /><br />
+    <div *ngIf="nameInput.invalid && nameInput.touched" style="color: red;">
+      Der Name darf nur Buchstaben enthalten.
+    </div><br />
 
     <label>Geschlecht:</label><br />
     <select [(ngModel)]="geschlecht" name="geschlecht" required>

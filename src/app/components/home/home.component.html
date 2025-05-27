@@ -13,17 +13,28 @@
 
   <h1>Charakter Eingeben!</h1>
 
-  <input [(ngModel)]="userGuess" (input)="filterSuggestions()" placeholder="Enter character name..." class="input-box">
+  <input
+    [(ngModel)]="userGuess"
+    (input)="filterSuggestions()"
+    (keydown)="onKeyDown($event)"
+    placeholder="Enter character name..."
+    class="input-box"
+  />
   <button (click)="checkGuess()" class="button button-submit">Submit</button>
   <ul *ngIf="suggestions.length > 0" class="autocomplete-list">
-    <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
+    <li
+      *ngFor="let suggestion of suggestions; let i = index"
+      (click)="selectSuggestion(suggestion)"
+      [class.active]="i === highlightedIndex"
+    >
       {{ suggestion.name }}
     </li>
   </ul>
 
+
   <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 
-  <table class="character-table">
+  <table *ngIf="charactersGuess.length > 0" class="character-table">
     <thead>
     <tr>
       <th> Name</th>
@@ -63,7 +74,6 @@
         {{ guessedCharacter.faehigkeit }}
       </td>
     </tr>
-
     </tbody>
   </table>
 
