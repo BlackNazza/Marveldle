@@ -1,0 +1,32 @@
+<div class="modal-backdrop" (click)="close()"></div>
+<div class="modal-content" (click)="$event.stopPropagation()">
+  <h2>Exportieren</h2>
+  <form #form="ngForm" novalidate>
+    <label for="name">Name:</label><br />
+    <input type="text" id="name" [(ngModel)]="name" name="name" required /><br /><br />
+
+    <label>Geschlecht:</label><br />
+    <select [(ngModel)]="geschlecht" name="geschlecht" required>
+      <option value="" disabled>Bitte auswählen</option>
+      <option value="Mann">Mann</option>
+      <option value="Frau">Frau</option>
+    </select><br /><br />
+
+    <label>Volljährig:</label><br />
+    <label><input type="radio" name="volljaehrig" [(ngModel)]="volljaehrig" value="Ja" required /> Ja</label>
+    <label><input type="radio" name="volljaehrig" [(ngModel)]="volljaehrig" value="Nein" required /> Nein</label><br /><br />
+
+    <label for="geburtsdatum">Geburtsdatum:</label><br />
+    <input type="date" id="geburtsdatum" [(ngModel)]="geburtsdatum" name="geburtsdatum" required /><br /><br />
+
+    <label>Aktuelles Datum:</label><br />
+    <input type="text" [value]="aktuellesDatum | date:'yyyy-MM-dd HH:mm:ss'" readonly /><br /><br />
+
+    <button type="button" (click)="checkAndSubmit(form)">Exportieren</button>
+    <button type="button" (click)="close()">Abbrechen</button>
+
+    <div *ngIf="showError" style="color: red; margin-top: 10px;">
+      Bitte füllen Sie alle erforderlichen Felder korrekt aus!
+    </div>
+  </form>
+</div>
